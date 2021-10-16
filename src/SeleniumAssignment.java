@@ -56,6 +56,30 @@ public class SeleniumAssignment {
         //test9.repeatTaskWeekly();
         //Success
 
+        //Add a Step to the Task
 
+        //Mark a Task as Important
+        //MarkTaskImportantTest test12 = new MarkTaskImportantTest();
+        //test12.setUp();
+        //test12.markTaskImportant();
+        //Success
+
+        //Sort Tasks Alphabetically
+        //SortTasksDueDateTest test13 = new SortTasksDueDateTest();
+        //test13.setUp();
+        //test13.sortTasksDueDate();
+        //Success
+
+        //Sort Tasks by Due Date
+        //SortTasksAlphabeticallyTest test14 = new SortTasksAlphabeticallyTest();
+        //test14.setUp();
+        //test14.sortTasksAlphabetically();
+        //Success
+
+        //Add a Task to My Day
+        //AddTaskToMyDayTest test15 = new AddTaskToMyDayTest();
+        //test15.setUp();
+        //test15.addTaskToMyDay();
+        //Success
     }
 }

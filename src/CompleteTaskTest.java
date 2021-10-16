@@ -47,9 +47,9 @@ public class CompleteTaskTest {
         driver.findElement(By.id("newSessionLink")).click();
         {
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
-            wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("div#inbox>div")));
+            wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//span[text()='Tasks'])[1]")));
         }
-        driver.findElement(By.cssSelector("div#inbox>div")).click();
+        driver.findElement(By.xpath("(//span[text()='Tasks'])[1]")).click();
         {
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
             wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("button[aria-label='Add a task']")));
