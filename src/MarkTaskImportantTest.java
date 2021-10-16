@@ -19,7 +19,7 @@ public class MarkTaskImportantTest {
     public void tearDown() {
         driver.quit();
     }
-    public void markTaskImportant() {
+    public boolean markTaskImportant() {
         driver.get("https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=3ff8e6ba-7dc3-4e9e-ba40-ee12b60d6d48&scope=openid%20profile%20email%20offline_access&redirect_uri=https%3A%2F%2Ftodo.microsoft.com%2Fauth%2Fcallback&client-request-id=9aaf9a1f-b934-4ac0-ab0d-889b53e8e66b&response_mode=fragment&response_type=code&x-client-SKU=msal.js.browser&x-client-VER=2.14.1&x-client-OS=&x-client-CPU=&client_info=1&code_challenge=udx_CgPIvudNfQlyyRvIqTzD3HyExtqcb6dDwsmtbb4&code_challenge_method=S256&prompt=select_account&nonce=bf4602e1-e523-49da-913b-4c74a715db14&state=eyJpZCI6Ijk5OGMyYWI1LThkODQtNGFmNS1hMDNhLWMwZDRiYjMwYzMxZSIsIm1ldGEiOnsiaW50ZXJhY3Rpb25UeXBlIjoicmVkaXJlY3QifX0%3D");
         driver.manage().window().setSize(new Dimension(1670, 881));
         {
@@ -69,5 +69,7 @@ public class MarkTaskImportantTest {
             wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[@class='importanceButton']//i[1]")));
         }
         driver.findElement(By.xpath("//span[@class='importanceButton']//i[1]")).click();
+
+        return true;
     }
 }
