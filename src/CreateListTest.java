@@ -6,7 +6,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class RenameTaskTest {
+public class CreateListTest {
     private WebDriver driver;
     public void setUp() {
         EdgeOptions edgeOptions = new EdgeOptions();
@@ -16,7 +16,7 @@ public class RenameTaskTest {
     public void tearDown() {
         driver.quit();
     }
-    public void renameTask() {
+    public boolean createList() {
         driver.get("https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=3ff8e6ba-7dc3-4e9e-ba40-ee12b60d6d48&scope=openid%20profile%20email%20offline_access&redirect_uri=https%3A%2F%2Ftodo.microsoft.com%2Fauth%2Fcallback&client-request-id=9aaf9a1f-b934-4ac0-ab0d-889b53e8e66b&response_mode=fragment&response_type=code&x-client-SKU=msal.js.browser&x-client-VER=2.14.1&x-client-OS=&x-client-CPU=&client_info=1&code_challenge=udx_CgPIvudNfQlyyRvIqTzD3HyExtqcb6dDwsmtbb4&code_challenge_method=S256&prompt=select_account&nonce=bf4602e1-e523-49da-913b-4c74a715db14&state=eyJpZCI6Ijk5OGMyYWI1LThkODQtNGFmNS1hMDNhLWMwZDRiYjMwYzMxZSIsIm1ldGEiOnsiaW50ZXJhY3Rpb25UeXBlIjoicmVkaXJlY3QifX0%3D");
         driver.manage().window().setSize(new Dimension(1670, 881));
         {
@@ -47,33 +47,12 @@ public class RenameTaskTest {
         driver.findElement(By.id("newSessionLink")).click();
         {
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
-            wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//span[text()='Tasks'])[1]")));
+            wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@aria-label='New list']//i[1]")));
         }
-        driver.findElement(By.xpath("(//span[text()='Tasks'])[1]")).click();
-        {
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-            wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("button[aria-label='Add a task']")));
-        }
-        driver.findElement(By.cssSelector("button[aria-label='Add a task']")).click();
-        {
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-            wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#baseAddInput-addTask")));
-        }
-        driver.findElement(By.cssSelector("#baseAddInput-addTask")).sendKeys("Test");
+        driver.findElement(By.xpath("//button[@aria-label='New list']//i[1]")).click();
+        driver.findElement(By.id("baseAddInput-addList")).sendKeys("Test List");
         driver.findElement(By.id("baseAddInput-addTask")).sendKeys(Keys.ENTER);
-        {
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-            wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("button.taskItem-titleWrapper")));
-        }
-        driver.findElement(By.cssSelector("button.taskItem-titleWrapper")).click();
-        {
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-            wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("div.editableContent-display")));
-        }
-        driver.findElement(By.cssSelector("div.editableContent-display")).click();
-        driver.findElement(By.cssSelector("div.editableContent-display")).clear();
-        driver.findElement(By.cssSelector("div.editableContent-display")).sendKeys("Renamed Test");
-        driver.findElement(By.id("baseAddInput-addTask")).sendKeys(Keys.ENTER);
-        driver.findElement(By.xpath("//button[@aria-label='Hide detail view']//i[1]")).click();
+
+        return true;
     }
 }
